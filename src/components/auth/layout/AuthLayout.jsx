@@ -22,7 +22,6 @@ const AuthLayout = ({ children, title = '' }) => {
             padding: 3,
             borderRadius: 2,
             width: { sm: 450 },
-            boxShadow: '0px 5px 5px rgba(0, 0, 0, 0.2)',
           }}
         >
           <Typography variant="h5" sx={{ mb: 1 }}>
