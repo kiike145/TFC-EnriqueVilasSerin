@@ -4,7 +4,7 @@ import { Button, Grid, TextField } from '@mui/material';
 
 const SignUpPage = () => {
   return (
-    <AuthLayout title="SignUp Page">
+    <AuthLayout title="SignUp">
       <form>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>

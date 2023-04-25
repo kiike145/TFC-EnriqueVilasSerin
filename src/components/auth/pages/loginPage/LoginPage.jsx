@@ -1,11 +1,10 @@
 import React from 'react';
 import AuthLayout from '../../layout/AuthLayout';
 import { Button, Grid, TextField } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   return (
-    <AuthLayout title="Login Page">
+    <AuthLayout title="Login">
       <form>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
