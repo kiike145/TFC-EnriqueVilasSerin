@@ -18,15 +18,14 @@ const LoginPage = () => {
 
           <Grid item xs={12} sx={{ mt: 2 }}>
             <Button fullWidth variant="contained">
-              Login
+              <strong>Inicar sesión</strong>
             </Button>
-          </Grid>
-
-          <Grid container direction="row" justifyContent="end" sx={{ mt: 2 }}>
-            <Link>Crear cuenta</Link>
           </Grid>
         </Grid>
       </form>
+      <Grid container direction="row" justifyContent="end" sx={{ mt: 2 }}>
+        <a href="/signup">Crear cuenta</a>
+      </Grid>
     </AuthLayout>
   );
 };

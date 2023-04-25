@@ -1,7 +1,6 @@
 import React from 'react';
 import AuthLayout from '../../layout/AuthLayout';
 import { Button, Grid, TextField } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 const SignUpPage = () => {
   return (
@@ -24,18 +23,18 @@ const SignUpPage = () => {
             <TextField name="email" placeholder="Email" fullWidth />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField name="email" placeholder="Email" fullWidth />
+            Fecha naciemiento
           </Grid>
 
           <Grid item xs={12} sx={{ mt: 2 }}>
             <Button fullWidth variant="contained">
-              Crear cuenta
+              <strong>Crear cuenta</strong>
             </Button>
           </Grid>
 
           <Grid container direction="row" justifyContent="end" sx={{ mt: 2 }}>
             <span>¿Ya tienes cuenta?</span>&nbsp;
-            <Link>Iniciar sesión</Link>
+            <a href="/login">Inicar sesión</a>
           </Grid>
         </Grid>
       </form>
