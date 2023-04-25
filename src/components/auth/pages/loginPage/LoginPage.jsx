@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthLayout from '../../layout/AuthLayout';
-import { Button, Grid, TextField } from '@mui/material';
+import { Button, Grid, TextField, OutlinedInput } from '@mui/material';
 
 const LoginPage = () => {
   return (
@@ -8,11 +8,11 @@ const LoginPage = () => {
       <form>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField name="username" placeholder="Nombre de usuario" fullWidth />
+            <TextField name="username" label="Nombre de usuario" color="secondary" fullWidth />
           </Grid>
 
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField name="password" placeholder="Contraseña" fullWidth />
+            <TextField name="password" label="Contraseña" color="secondary" fullWidth />
           </Grid>
 
           <Grid item xs={12} sx={{ mt: 2 }}>
