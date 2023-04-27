@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import AuthLayout from '../../layout/AuthLayout';
-import { Button, Grid, Link, TextField } from '@mui/material';
-import DateFormPicker from './DatePicker';
+import { Button, Grid, TextField } from '@mui/material';
 
 const SignUpPage = () => {
   return (
@@ -16,7 +14,14 @@ const SignUpPage = () => {
             <TextField name="lastname" type="text" label="Apellidos" color="secondary" fullWidth />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <DateFormPicker />
+            <TextField
+              name="birthday"
+              type="date"
+              label="Fecha nacimiento"
+              color="secondary"
+              fullWidth
+              placeholder=""
+            />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField name="username" type="text" label="Nombre de usuario" color="secondary" fullWidth />
@@ -36,9 +41,7 @@ const SignUpPage = () => {
 
           <Grid container direction="row" justifyContent="end" sx={{ mt: 2 }}>
             <span>¿Ya tienes cuenta?</span>&nbsp;
-            <Link component={RouterLink} to="/login" underline="hover" sx={{ color: '#490178' }}>
-              Iniciar sesión
-            </Link>
+            <a href="/login">Iniciar sesión</a>
           </Grid>
         </Grid>
       </form>
