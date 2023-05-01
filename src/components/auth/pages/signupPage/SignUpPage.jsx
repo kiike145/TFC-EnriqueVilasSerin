@@ -35,7 +35,7 @@ const SignUpPage = () => {
 
           <Grid container direction="row" justifyContent="end" sx={{ mt: 2 }}>
             <span>¿Ya tienes cuenta?</span>&nbsp;
-            <Link>Iniciar sesión</Link>
+            <a href="/auth/login">Iniciar sesión</a>
           </Grid>
         </Grid>
       </form>

@@ -23,7 +23,7 @@ const LoginPage = () => {
           </Grid>
 
           <Grid container direction="row" justifyContent="end" sx={{ mt: 2 }}>
-            <Link>Crear cuenta</Link>
+            <a href="/auth/signup">Crear cuenta</a>
           </Grid>
         </Grid>
       </form>
