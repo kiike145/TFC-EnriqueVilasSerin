@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import LoginPage from '../../components/auth/pages/loginPage/LoginPage';
 import SignUpPage from '../../components/auth/pages/signupPage/SignUpPage';
+import { HomePage, CartPage, ProductsPage } from '../../components/store/';
 
 const AppRoutes = () => {
   return (
@@ -9,6 +10,10 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<Navigate to="/" />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/products" element={<ProductsPage />} />
       </Routes>
     </BrowserRouter>
   );
