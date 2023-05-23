@@ -10,7 +10,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer estado;
-    private Float precioTotal;
+    private Float preciototal;
     private Boolean activo;
     @ManyToOne
     @JoinColumn(name = "idusuario")
@@ -34,12 +34,12 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public Float getPrecioTotal() {
-        return this.precioTotal;
+    public Float getPreciototal() {
+        return this.preciototal;
     }
 
-    public void setPrecioTotal(Float precioTotal) {
-        this.precioTotal = precioTotal;
+    public void setPreciototal(Float precioTotal) {
+        this.preciototal = precioTotal;
     }
 
     public Boolean getActivo() {
@@ -63,7 +63,7 @@ public class Pedido {
         return "Pedido{" +
                 "id=" + id +
                 ", estado=" + estado +
-                ", precioTotal=" + precioTotal +
+                ", precioTotal=" + preciototal +
                 ", activo=" + activo +
                 ", usuario=" + usuario +
                 '}';

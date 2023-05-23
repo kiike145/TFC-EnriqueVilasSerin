@@ -10,4 +10,6 @@ public interface IPedidoService {
     void borrarPedidoById(Integer id);
     List<Pedido> obtenerPedidos();
     Pedido obtenerPedidoById(Integer id);
+	void guardarPedido(Pedido p);
+	void habilitarPedidoById(Integer id);
 }

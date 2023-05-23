@@ -3,10 +3,12 @@ package com.example.demo.service;
 import com.example.demo.model.Pedido;
 import com.example.demo.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PedidoServiceImpl implements IPedidoService {
 
     @Autowired
@@ -24,6 +26,7 @@ public class PedidoServiceImpl implements IPedidoService {
 
         if (o.isPresent()) {
             o.get().setActivo(false);
+            pedidoRepo.save(o.get());
         }
     }
 
@@ -43,4 +46,20 @@ public class PedidoServiceImpl implements IPedidoService {
         
         return null;
     }
+
+	@Override
+	public void guardarPedido(Pedido p) {
+		pedidoRepo.save(p);
+	}
+
+	@Override
+	public void habilitarPedidoById(Integer id) {
+        Optional<Pedido> o = pedidoRepo.findById(id);
+
+        if (o.isPresent()) {
+            o.get().setActivo(true);
+            pedidoRepo.save(o.get());
+        }
+		
+	}
 }
