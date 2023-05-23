@@ -1,9 +1,9 @@
 package com.example.demo.mvcController;
 
-import com.example.demo.model.Categoria;
 import com.example.demo.model.Producto;
 import com.example.demo.service.ICategoriaService;
 import com.example.demo.service.IProductosService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +31,12 @@ public class ProductosController {
 		model.addAttribute("listaCategorias", categoriaServ.obtenerCategorias());
 		model.addAttribute("producto", productosServ.obtenerProductoById(id));
 		return "/productos/form";
+	}
+	
+	@GetMapping("/activate/{id}")
+	public String habilitarProducto(@PathVariable("id") Integer id) {
+		productosServ.habilitarProductoById(id);
+		return "redirect:/productos/";
 	}
 
 	@GetMapping("/delete/{id}")

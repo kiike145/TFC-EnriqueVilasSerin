@@ -11,43 +11,54 @@ import java.util.Optional;
 @Service
 public class ProductosServiceImpl implements IProductosService {
 
-    @Autowired
-    ProductoRepository productosRepo;
+	@Autowired
+	ProductoRepository productosRepo;
 
-    @Override
-    public void guardarProducto(Producto p) {
-        p.setActivo(true);
-        System.out.println(p);
-        productosRepo.save(p);
-    }
+	@Override
+	public void guardarProducto(Producto p) {
+		p.setActivo(true);
+		productosRepo.save(p);
+	}
 
-    @Override
-    public void borrarProductoById(Integer id) {
-        Optional<Producto> o = productosRepo.findById(id);
+	@Override
+	public void borrarProductoById(Integer id) {
+		Optional<Producto> p = productosRepo.findById(id);
 
-        if (o.isPresent()) {
-            o.get().setActivo(false);
-        }
-    }
+		if (p.isPresent()) {
+			p.get().setActivo(false);
+			productosRepo.save(p.get());
+		}
+	}
 
-    @Override
-    public Producto obtenerProductoById(Integer id) {
+	@Override
+	public Producto obtenerProductoById(Integer id) {
 
-        Optional<Producto> p = productosRepo.findById(id);
+		Optional<Producto> p = productosRepo.findById(id);
 
-        if (p.isPresent()) {
-            return p.get();
-        }
-        return null;
-    }
+		if (p.isPresent()) {
+			return p.get();
+		}
+		return null;
+	}
 
-    @Override
-    public List<Producto> obtenerProductos() {
-        return productosRepo.findAll();
-    }
+	@Override
+	public List<Producto> obtenerProductos() {
+		return productosRepo.findAll();
+	}
 
-    @Override
-    public List<Producto> obtenerProductosDestacados() {
-        return productosRepo.findByDestacado(true);
-    }
+	@Override
+	public List<Producto> obtenerProductosDestacados() {
+		return productosRepo.findByDestacado(true);
+	}
+
+	@Override
+	public void habilitarProductoById(Integer id) {
+		Optional<Producto> p = productosRepo.findById(id);
+
+		if (p.isPresent()) {
+			
+			p.get().setActivo(true);
+			productosRepo.save(p.get());
+		}
+	}
 }

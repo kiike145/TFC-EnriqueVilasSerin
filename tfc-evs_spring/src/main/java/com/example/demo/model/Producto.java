@@ -86,11 +86,11 @@ public class Producto {
         this.destacado = destacado;
     }
 
-    public Categoria getcategoria() {
+    public Categoria getCategoria() {
         return this.categoria;
     }
 
-    public void setcategoria(Categoria categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 

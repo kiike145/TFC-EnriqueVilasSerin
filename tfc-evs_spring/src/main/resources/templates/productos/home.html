@@ -11,7 +11,7 @@
 
 	<h2>Listado de productos</h2>
 
-	<a th:href="@{/productos/form}" class="btn btn-primary mb-3">
+	<a th:href="@{/productos/form}" class="btn btn-primary mb-3 ">
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
   		<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
 		</svg>
@@ -35,10 +35,11 @@
 				<td th:text="${producto.cantidad}"></td>
 				<td th:text="${producto.destacado} ? 'Sí' : 'No'"></td>
 				<td th:text="${producto.activo} ? 'Sí' : 'No'"></td>
-				<td th:text="${producto.categoria}"></td>
+				<td th:text="${producto.categoria.nombre}"></td>
 				<td>
 					<a th:href="@{/productos/edit/{id} (id = ${producto.id})}">Editar</a>
-					<a th:href="@{/productos/delete/{id} (id = ${producto.id})}">Borrar registro</a>
+					<a th:href="@{/productos/activate/{id} (id = ${producto.id})}">Habilitar</a>
+					<a th:href="@{/productos/delete/{id} (id = ${producto.id})}">Deshabilitar</a>
 				</td>
 			</tr>
 		</tr>
