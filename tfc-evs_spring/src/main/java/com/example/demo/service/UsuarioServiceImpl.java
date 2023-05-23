@@ -26,6 +26,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
         if (o.isPresent()) {
             o.get().setActivo(false);
+            usuarioRepo.save(o.get());
         }
     }
 
@@ -43,4 +44,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
         }
         return null;
     }
+
+	@Override
+	public void habilitarUsuarioById(Integer id) {
+        Optional<Usuario> o = usuarioRepo.findById(id);
+
+        if (o.isPresent()) {
+            o.get().setActivo(true);
+            usuarioRepo.save(o.get());
+		}
+	}
 }

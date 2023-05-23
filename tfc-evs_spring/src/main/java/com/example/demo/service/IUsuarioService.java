@@ -10,4 +10,5 @@ public interface IUsuarioService {
     void eliminarUsuarioById(Integer id);
     List<Usuario> obtenerUsuarios();
     Usuario obtenerUsuarioById(Integer id);
+	void habilitarUsuarioById(Integer id);
 }

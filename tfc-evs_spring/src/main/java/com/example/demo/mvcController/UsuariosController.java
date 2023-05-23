@@ -40,8 +40,14 @@ public class UsuariosController {
     public String borrarUsuario(@PathVariable("id") Integer id , RedirectAttributes attributes) {
         usuarioServ.eliminarUsuarioById(id);
         attributes.addFlashAttribute("msg", "Registro eliminado correctamente");
-        return "redirect:/usuarios/";
+        return "redirect:/users/";
     }
+    
+	@GetMapping("/activate/{id}")
+	public String habilitarUsuario(@PathVariable("id") Integer id) {
+		usuarioServ.habilitarUsuarioById(id);
+		return "redirect:/users/";
+	}
 
     @GetMapping("/form")
     public String mostrarFormulario(Usuario u , Model model) {
@@ -53,7 +59,7 @@ public class UsuariosController {
     public String guardarUsuario(Usuario u, BindingResult result , RedirectAttributes attributes) {
         usuarioServ.crearUsuario(u);
         attributes.addFlashAttribute("msg", "Registro realizado correctamente");
-        return "redirect:/Usuarios/";
+        return "redirect:/users/";
     }
 
 }

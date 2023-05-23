@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-    Usuario findByNombreUsuarioAndContrasena(String username , String password);
+    Usuario findByNombreusuarioAndContrasena(String username , String password);
     List<Usuario> findByActivo(Boolean activo);
 }
