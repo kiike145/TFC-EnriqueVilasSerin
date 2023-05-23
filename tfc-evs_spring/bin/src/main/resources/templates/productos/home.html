@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<a th:href="@{/productos/form}">Formulario Productos</a>
+
+<table class="table">
+	<th>Nombre</th>
+	<th>Altura</th>
+	<th>Peso</th>
+	<th>Especie</th>
+	<th>Operaciones</th>
+
+	<tr th:each="prodcuto : ${lista}">
+		<td>
+			<a th:href="@{/prodcutos/edit/{id} (id = ${prodcuto.id})}">Editar</a>
+			<a th:href="@{/prodcutos/delete/{id} (id = ${prodcuto.id})}">Borrar registro</a>
+		</td>
+	</tr>
+</table>
+
+<p th:if="${msg != null}" th:text="${msg}"></p>
+</body>
+</html>
