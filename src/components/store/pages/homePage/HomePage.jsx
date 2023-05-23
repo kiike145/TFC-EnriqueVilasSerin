@@ -5,18 +5,14 @@ import GeneralLayout from '../../../../common/layout/GeneralLayout';
 export const HomePage = () => {
   return (
     <GeneralLayout>
-      <Grid
-        container
-        alignItems="center"
-        justifyContent="center"
-        direction="column"
-        spacing={0}
-        sx={{ minHeight: '80vh', backgroundColor: '#F9F9F9', padding: 4 }}
-      >
-        <Typography variant="h1" sx={{ mb: 1 }}>
-          Hola!
-        </Typography>
-        a
+      <Typography variant="h1">Hola!</Typography>
+      <Grid container direction="row" wrap="wrap">
+        <Grid container sx={{ maxWidth: '50%' }}>
+          banner
+        </Grid>
+        <Grid container sx={{ maxWidth: '50%' }} justifyContent="center">
+          <h3>Artículos destacados</h3>
+        </Grid>
       </Grid>
     </GeneralLayout>
   );
