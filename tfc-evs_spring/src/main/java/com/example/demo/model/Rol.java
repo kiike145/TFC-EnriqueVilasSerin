@@ -11,7 +11,7 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nombreRol;
+    private String nombrerol;
 
     public Rol() {}
 
@@ -22,17 +22,17 @@ public class Rol {
         this.id = id;
     }
     public String getNombreRol() {
-        return this.nombreRol;
+        return this.nombrerol;
     }
     public void setNombreRol(String nombreRol) {
-        this.nombreRol = nombreRol;
+        this.nombrerol = nombreRol;
     }
 
     @Override
     public String toString() {
         return "Rol{" +
                 "id=" + id +
-                ", nombreRol='" + nombreRol + '\'' +
+                ", nombreRol='" + nombrerol + '\'' +
                 '}';
     }
 }

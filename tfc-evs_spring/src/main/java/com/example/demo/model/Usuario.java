@@ -12,11 +12,11 @@ public class Usuario {
     private Integer id;
     private String nombre;
     private String apellidos;
-    private String nombreUsuario;
+    private String nombreusuario;
     private String email;
     private String contrasena;
     private String direccion;
-    private String fechaNacimiento;
+    private String fechanacimiento;
     private Boolean activo;
     @ManyToMany
     @JoinTable(
@@ -52,12 +52,12 @@ public class Usuario {
         this.apellidos = apellidos;
     }
 
-    public String getNombreUsuario() {
-        return this.nombreUsuario;
+    public String getNombreusuario() {
+        return this.nombreusuario;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombreusuario(String nombreUsuario) {
+        this.nombreusuario = nombreUsuario;
     }
 
     public String getEmail() {
@@ -84,12 +84,12 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public String getFechaNacimiento() {
-        return this.fechaNacimiento;
+    public String getFechanacimiento() {
+        return this.fechanacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechanacimiento(String fechaNacimiento) {
+        this.fechanacimiento = fechaNacimiento;
     }
 
     public Boolean getActivo() {
@@ -114,11 +114,11 @@ public class Usuario {
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
-                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", nombreUsuario='" + nombreusuario + '\'' +
                 ", email='" + email + '\'' +
                 ", contrasena='" + contrasena + '\'' +
                 ", direccion='" + direccion + '\'' +
-                ", fechaNacimiento='" + fechaNacimiento + '\'' +
+                ", fechaNacimiento='" + fechanacimiento + '\'' +
                 ", activo=" + activo +
                 ", roles=" + roles +
                 '}';
