@@ -12,4 +12,5 @@ public interface IProductosService {
     Producto obtenerProductoById(Integer id);
     List<Producto> obtenerProductos();
     List<Producto> obtenerProductosDestacados();
+    List<Producto> obtenerProductosActivos();
 }

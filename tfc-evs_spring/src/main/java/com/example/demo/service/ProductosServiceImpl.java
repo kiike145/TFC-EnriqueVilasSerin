@@ -52,6 +52,11 @@ public class ProductosServiceImpl implements IProductosService {
 	}
 
 	@Override
+	public List<Producto> obtenerProductosActivos() {
+		return productosRepo.findByActivo(true);
+	}
+
+	@Override
 	public void habilitarProductoById(Integer id) {
 		Optional<Producto> p = productosRepo.findById(id);
 
