@@ -3,7 +3,7 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "detallesPedido")
+@Table(name = "detallespedido")
 public class DetallesPedido {
 
     @Id
@@ -15,10 +15,10 @@ public class DetallesPedido {
     private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "idusuario")
-    private Usuario usuario;
+    @JoinColumn(name = "idproducto")
+    private Producto producto;
 
-    private Integer cantidadProducto;
+    private Integer cantidadproducto;
 
     public DetallesPedido() {}
 
@@ -38,20 +38,20 @@ public class DetallesPedido {
         this.pedido = pedido;
     }
 
-    public Usuario getUsuario() {
-        return this.usuario;
+    public Producto getProducto() {
+        return this.producto;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
-    public Integer getCantidadProducto() {
-        return this.cantidadProducto;
+    public Integer getCantidadproducto() {
+        return this.cantidadproducto;
     }
 
-    public void setCantidadProducto(Integer cantidadProducto) {
-        this.cantidadProducto = cantidadProducto;
+    public void setCantidadproducto(Integer cantidadproducto) {
+        this.cantidadproducto = cantidadproducto;
     }
 
     @Override
@@ -59,8 +59,8 @@ public class DetallesPedido {
         return "DetallesPedido{" +
                 "id=" + id +
                 ", pedido=" + pedido +
-                ", usuario=" + usuario +
-                ", cantidadProducto=" + cantidadProducto +
+                ", producto=" + producto +
+                ", cantidadProducto=" + cantidadproducto +
                 '}';
     }
 }

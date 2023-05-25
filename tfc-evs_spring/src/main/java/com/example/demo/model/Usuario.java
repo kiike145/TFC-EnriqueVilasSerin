@@ -20,7 +20,7 @@ public class Usuario {
     private Boolean activo;
     @ManyToMany
     @JoinTable(
-            name = "usuariosXrol",
+            name = "usuariosxrol",
             joinColumns = @JoinColumn(name = "idusuario"),
             inverseJoinColumns = @JoinColumn(name="idrol")
     )

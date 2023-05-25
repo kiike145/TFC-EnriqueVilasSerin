@@ -20,7 +20,7 @@ public class PedidosController {
 
 	@GetMapping("/")
 	public String homePedidos(Model model) {
-		model.addAttribute("listaProds", pedidosServ.obtenerPedidos());
+		model.addAttribute("listaPedidos", pedidosServ.obtenerPedidos());
 		return "pedidos/home";
 	}
 
