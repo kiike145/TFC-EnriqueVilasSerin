@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Pedido;
+import com.example.demo.model.Usuario;
 import com.example.demo.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,4 +64,9 @@ public class PedidoServiceImpl implements IPedidoService {
         }
 		
 	}
+
+    @Override
+    public Pedido obtenerPedidoByUsuarioAndEstado(Usuario u, Integer estado) {
+        return pedidoRepo.findByUsuarioAndEstado(u , estado);
+    }
 }
