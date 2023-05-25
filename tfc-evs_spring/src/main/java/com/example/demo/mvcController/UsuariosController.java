@@ -24,7 +24,7 @@ public class UsuariosController {
 
     @GetMapping("/")
     public String homeUsuarios(Model model) {
-        model.addAttribute("listaUsers" , usuarioServ.obtenerUsuarios());
+        model.addAttribute("listaUsers" , usuarioServ.getUsuarios());
         return "usuarios/home";
     }
 
@@ -32,7 +32,7 @@ public class UsuariosController {
     @GetMapping("/edit/{id}")
     public String actualizarUsuario(@PathVariable("id") Integer id , Model model) {
         model.addAttribute("listaRoles", rolServ.obtenerRol());
-        model.addAttribute("usuario", usuarioServ.obtenerUsuarioById(id));
+        model.addAttribute("usuario", usuarioServ.getUsuarioById(id));
         return "/usuarios/form";
     }
 

@@ -15,9 +15,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
     UsuarioRepository usuarioRepo;
 
     @Override
-    public void crearUsuario(Usuario u) {
-        u.setActivo(true);
-        usuarioRepo.save(u);
+    public Boolean crearUsuario(Usuario u) {
+
+        if (usuarioRepo.findByNombreusuarioAndContrasena(u.getNombreusuario() , u.getContrasena()) == null) {
+            u.setActivo(true);
+            usuarioRepo.save(u);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -31,12 +36,12 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public List<Usuario> obtenerUsuarios() {
+    public List<Usuario> getUsuarios() {
         return usuarioRepo.findAll();
     }
 
     @Override
-    public Usuario obtenerUsuarioById(Integer id) {
+    public Usuario getUsuarioById(Integer id) {
         Optional<Usuario> o = usuarioRepo.findById(id);
 
         if (o.isPresent()) {
@@ -54,4 +59,19 @@ public class UsuarioServiceImpl implements IUsuarioService {
             usuarioRepo.save(o.get());
 		}
 	}
+
+    @Override
+    public boolean findUsuarioByNombreusuarioAndContrasena(String nombreusuario, String contrasena) {
+
+        if (usuarioRepo.findByNombreusuarioAndContrasena(nombreusuario , contrasena) == null) {
+            // En caso de que sea nulo, no existe ningun registro con esos datos
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public Usuario getUsuarioByNombreusuarioAndContrasena(String nombreusuario, String contrasena) {
+        return usuarioRepo.findByNombreusuarioAndContrasena(nombreusuario , contrasena);
+    }
 }
