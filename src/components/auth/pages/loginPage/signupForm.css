@@ -1,0 +1,5 @@
+.error {
+  text-align: center;
+  font-weight: bolder;
+  background: rgba(255, 0, 0, 0.3);
+}

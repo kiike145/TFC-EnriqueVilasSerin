@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import AuthLayout from '../../layout/AuthLayout';
-import { Button, Grid, TextField } from '@mui/material';
+import { Box, Button, Grid, TextField } from '@mui/material';
+
+import './signupForm.css';
 
 const LoginPage = () => {
-  const [error, setError] = useState([]); // Mostrarle los errores al usuario
+  const [errorMsg, setErrorMsg] = useState('');
   const [formState, setFormState] = useState({
-    // Datos por defecto del formulario (vacio)
     nombreusuario: '',
     contrasena: '',
   });
@@ -27,19 +28,26 @@ const LoginPage = () => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    }).then((data) => {
-      if (data.status === 200) {
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error('Error en la solicitud');
+        }
+      })
+      .then((data) => {
         sessionStorage.setItem('isLogged', true);
-      }
-      if (data.status === 400) {
-        setError('User not found');
-      }
-    });
+        sessionStorage.setItem('carrito', JSON.stringify(data));
+      })
+      .catch((error) => {
+        setErrorMsg('Usuario o contraseña incorrectos, revise los datos');
+      });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setError('');
+    setErrorMsg();
     logIn();
   };
 
@@ -72,6 +80,12 @@ const LoginPage = () => {
             <Button fullWidth variant="contained" type="submit">
               <strong>Inicar sesión</strong>
             </Button>
+
+            {errorMsg && (
+              <Box className="error" sx={{ mt: 2 }}>
+                {errorMsg}
+              </Box>
+            )}
           </Grid>
         </Grid>
       </form>
