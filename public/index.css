@@ -18,3 +18,21 @@ h1 {
   margin-block-end: 0;
   margin-block-start: 0;
 }
+
+h3 {
+  margin: 0;
+}
+
+.nombreProducto {
+  font-weight: bold;
+}
+
+.imagenProducto {
+  max-width: 100%;
+  height: auto;
+}
+
+.productHome {
+  max-width: 30%;
+  height: auto;
+}
