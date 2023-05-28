@@ -32,10 +32,11 @@ public class UsuariosControllerAPI {
     @PostMapping("/signup")
     public ResponseEntity<Usuario> registrarUsuario(@RequestBody Usuario user) {
 
-        if (usuarioServ.crearUsuario(user)) {
-            return new ResponseEntity<Usuario>(user , HttpStatus.ACCEPTED);
+        if (!usuarioServ.findUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena())) {
+            System.out.println("Usuario NO encontrado");
+            return new ResponseEntity<Usuario>(user , HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/login")

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IUsuarioService {
 
-    Boolean crearUsuario(Usuario u);
+    Usuario crearUsuario(Usuario u);
     void eliminarUsuarioById(Integer id);
     List<Usuario> getUsuarios();
     Usuario getUsuarioById(Integer id);

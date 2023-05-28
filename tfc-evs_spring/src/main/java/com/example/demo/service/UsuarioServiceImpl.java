@@ -15,14 +15,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
     UsuarioRepository usuarioRepo;
 
     @Override
-    public Boolean crearUsuario(Usuario u) {
+    public Usuario crearUsuario(Usuario u) {
 
         if (usuarioRepo.findByNombreusuarioAndContrasena(u.getNombreusuario() , u.getContrasena()) == null) {
             u.setActivo(true);
             usuarioRepo.save(u);
-            return true;
+            return u;
         }
-        return false;
+        return null;
     }
 
     @Override
