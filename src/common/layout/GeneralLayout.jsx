@@ -1,7 +1,10 @@
-import { AppBar, Box, Grid, Toolbar } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import React from 'react';
+import Logout from '../../components/auth/pages/logout/Logout';
 
 const GeneralLayout = ({ children }) => {
+  const isLogged = sessionStorage.getItem('isLogged');
+
   return (
     <Grid>
       <Grid
@@ -23,10 +26,14 @@ const GeneralLayout = ({ children }) => {
             <a href="/cart">Carro</a>
           </Box>
 
-          <Box>
-            <a href="/login">Login</a> &nbsp;
-            <a href="/signup">Sign up</a>
-          </Box>
+          {isLogged === 'true' ? (
+            <Logout />
+          ) : (
+            <Box>
+              <a href="/login">Login</a> &nbsp;
+              <a href="/signup">Sign up</a>
+            </Box>
+          )}
         </Grid>
       </Grid>
       <Grid container component="main" direction="column" sx={{ minHeight: '80vh', backgroundColor: '#F9F9F9' }}>
