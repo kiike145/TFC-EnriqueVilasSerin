@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import AuthLayout from '../../layout/AuthLayout';
+import { useNavigate } from 'react-router-dom';
 import { Box, Button, Grid, TextField } from '@mui/material';
+import AuthLayout from '../../layout/AuthLayout';
 
 import './signupForm.css';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [errorMsg, setErrorMsg] = useState('');
   const [formState, setFormState] = useState({
     nombreusuario: '',
@@ -49,6 +52,7 @@ const LoginPage = () => {
     event.preventDefault();
     setErrorMsg();
     logIn();
+    navigate('/');
   };
 
   return (
