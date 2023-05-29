@@ -2,6 +2,8 @@ import { Box, Button, Grid } from '@mui/material';
 import React from 'react';
 
 const ProductListItem = ({ product = {} }) => {
+  const isLogged = sessionStorage.getItem('isLogged');
+
   const handleOnClick = async () => {
     await fetch('http://localhost:8080/store/cart/', {
       method: 'POST',
@@ -21,7 +23,7 @@ const ProductListItem = ({ product = {} }) => {
       <Grid container justifyContent="space-between">
         <span className="nombreProducto">{product.nombre}</span> <span>{product.precio}€</span>
       </Grid>
-      <Button fullWidth variant="contained" onClick={handleOnClick}>
+      <Button fullWidth variant="contained" onClick={handleOnClick} disabled={isLogged === null}>
         Añadir
       </Button>
     </Box>
