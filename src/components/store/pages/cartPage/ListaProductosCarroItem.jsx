@@ -2,7 +2,9 @@ import React from 'react';
 import SelecctorUnidadesProducto from './SelecctorUnidadesProducto';
 import { Button, Grid } from '@mui/material';
 
-const ListaProductosCarroItem = ({ producto = {} }) => {
+const ListaProductosCarroItem = ({ dp = {} }) => {
+  const { producto } = dp;
+
   const handleOnClick = async () => {
     await fetch('http://localhost:8080/store/cart/', {
       method: 'DELETE',
@@ -27,7 +29,7 @@ const ListaProductosCarroItem = ({ producto = {} }) => {
       </Grid>
       <Grid>
         <h3>{producto.precio}€</h3>
-        <SelecctorUnidadesProducto producto={producto} />
+        <SelecctorUnidadesProducto dp={dp} />
         <Button variant="contained" sx={{ m: 1 }} onClick={handleOnClick}>
           Eliminar
         </Button>

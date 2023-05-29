@@ -2,11 +2,11 @@ import { Grid } from '@mui/material';
 import React from 'react';
 import ListaProductosCarroItem from './ListaProductosCarroItem';
 
-const ListaProductosCarro = ({ productos = [] }) => {
+const ListaProductosCarro = ({ detallesPedido = [] }) => {
   return (
     <Grid container width="60vw">
-      {productos.map((dp) => (
-        <ListaProductosCarroItem key={dp.id} producto={dp.producto} />
+      {detallesPedido.map((dp) => (
+        <ListaProductosCarroItem key={dp.id} dp={dp} />
       ))}
     </Grid>
   );
