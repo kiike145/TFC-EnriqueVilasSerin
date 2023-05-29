@@ -3,7 +3,7 @@ import React from 'react';
 const Logout = () => {
   const handleClick = (event) => {
     sessionStorage.removeItem('isLogged');
-    sessionStorage.removeItem('carrito');
+    sessionStorage.removeItem('idPedido');
   };
 
   return (
