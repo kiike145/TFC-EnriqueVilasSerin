@@ -36,3 +36,7 @@ h3 {
   max-width: 30%;
   height: auto;
 }
+
+.imagenCarro {
+  max-height: 20vh;
+}
