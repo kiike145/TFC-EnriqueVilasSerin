@@ -2,9 +2,11 @@ package com.example.demo.apiController;
 
 import com.example.demo.model.DetallesPedido;
 import com.example.demo.model.Pedido;
+import com.example.demo.model.Producto;
 import com.example.demo.model.Usuario;
 import com.example.demo.service.IDetallesPedido;
 import com.example.demo.service.IPedidoService;
+import com.example.demo.service.IProductosService;
 import com.example.demo.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,31 +29,32 @@ public class UsuariosControllerAPI {
     @Autowired
     IPedidoService pedidoServ;
     @Autowired
+    IProductosService productoServ;
+    @Autowired
     IDetallesPedido detallesPedidoServ;
 
     @PostMapping("/signup")
     public ResponseEntity<Usuario> registrarUsuario(@RequestBody Usuario user) {
 
         if (!usuarioServ.findUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena())) {
-            System.out.println("Usuario NO encontrado");
             return new ResponseEntity<Usuario>(user , HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+
     @PostMapping("/login")
-    public ResponseEntity<List<DetallesPedido>> loginUsuario(@RequestBody Usuario user) {
+    public ResponseEntity<Integer> loginUsuario(@RequestBody Usuario user) {
 
-        if (usuarioServ.findUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena())) {
-
-            Usuario u = usuarioServ.getUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena());
-            
-            return new ResponseEntity<>(
-                detallesPedidoServ.obtenerDetallesPedidoByPedido(
-                    pedidoServ.obtenerPedidoByUsuarioAndEstado(u , 1)
-                ) , HttpStatus.OK);
+        if (usuarioServ.findUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena())) { 
+            return new ResponseEntity<>(pedidoServ.obtenerPedidoByUsuarioAndEstado(usuarioServ.getUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena()), 1).getId() , HttpStatus.OK);
         }
 
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+    
+    @PostMapping("/")
+    public void addProductoToPedidoByUsuario(@RequestBody DetallesPedido detallesPedido) {
+    	detallesPedidoServ.crearDetallesPedido(detallesPedido);
     }
 }
