@@ -4,7 +4,8 @@ import GeneralLayout from '../../../../common/layout/GeneralLayout';
 import ListaProductosCarro from './ListaProductosCarro';
 
 export const CartPage = () => {
-  const [productos, setProductos] = useState([]);
+  const [detallesPedido, setDetallesPedido] = useState([]);
+  const [precioTotal, setPrecioTotal] = useState(0);
   const isLogged = sessionStorage.getItem('isLogged');
 
   useEffect(() => {
@@ -12,7 +13,17 @@ export const CartPage = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.status !== 400) {
-          setProductos(data);
+          setDetallesPedido(data);
+        }
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/store/cart/price/' + sessionStorage.getItem('idPedido'))
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status !== 400) {
+          setPrecioTotal(data);
         }
       });
   }, []);
@@ -25,13 +36,13 @@ export const CartPage = () => {
         </Typography>
 
         <Grid container justifyContent="space-around">
-          {isLogged === null ? <p className="infoMsg">No hay ningun artículo</p> : <ListaProductosCarro productos={productos} />}
+          {isLogged === null ? <p className="infoMsg">No hay ningun artículo</p> : <ListaProductosCarro detallesPedido={detallesPedido} />}
 
           {isLogged === null ? (
             ''
           ) : (
             <Grid container width="10vw" direction="column">
-              Total: €
+              Total: {precioTotal}€
               <Box>
                 <Button variant="contained">Tramitar pedido</Button>
               </Box>
