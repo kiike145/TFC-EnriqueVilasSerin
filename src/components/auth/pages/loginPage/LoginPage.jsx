@@ -41,7 +41,7 @@ const LoginPage = () => {
       })
       .then((data) => {
         sessionStorage.setItem('isLogged', true);
-        sessionStorage.setItem('carrito', JSON.stringify(data));
+        sessionStorage.setItem('idPedido', JSON.stringify(data));
       })
       .catch((error) => {
         setErrorMsg('Usuario o contraseña incorrectos, revise los datos');
