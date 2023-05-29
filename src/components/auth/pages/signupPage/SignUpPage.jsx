@@ -74,57 +74,22 @@ const SignUpPage = () => {
             <TextField name="name" type="text" label="Nombre" color="secondary" onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField
-              name="lastname"
-              type="text"
-              label="Apellidos"
-              color="secondary"
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextField name="lastname" type="text" label="Apellidos" color="secondary" onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField
-              name="direccion"
-              type="text"
-              label="Dirección"
-              color="secondary"
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextField name="direccion" type="text" label="Dirección" color="secondary" onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField
-              name="fechanacimiento"
-              type="date"
-              label="Fecha nacimiento"
-              color="secondary"
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextField name="fechanacimiento" type="date" label="Fecha nacimiento" color="secondary" onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField
-              name="nombreusuario"
-              type="text"
-              label="Nombre de usuario"
-              color="secondary"
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextField name="nombreusuario" type="text" label="Nombre de usuario" color="secondary" onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField name="email" type="email" label="Email" color="secondary" onChange={handleChange} fullWidth />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField
-              name="contrasena"
-              type="password"
-              label="Contraseña"
-              color="secondary"
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextField name="contrasena" type="password" label="Contraseña" color="secondary" onChange={handleChange} fullWidth />
           </Grid>
 
           <Grid item xs={12} sx={{ mt: 2 }}>

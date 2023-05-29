@@ -60,24 +60,11 @@ const LoginPage = () => {
       <form onSubmit={handleSubmit}>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField
-              name="nombreusuario"
-              label="Nombre de usuario"
-              color="secondary"
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextField name="nombreusuario" label="Nombre de usuario" color="secondary" onChange={handleChange} fullWidth />
           </Grid>
 
           <Grid item xs={12} sx={{ mt: 2 }}>
-            <TextField
-              name="contrasena"
-              label="Contraseña"
-              type="password"
-              color="secondary"
-              onChange={handleChange}
-              fullWidth
-            />
+            <TextField name="contrasena" label="Contraseña" type="password" color="secondary" onChange={handleChange} fullWidth />
           </Grid>
 
           <Grid item xs={12} sx={{ mt: 2 }}>
