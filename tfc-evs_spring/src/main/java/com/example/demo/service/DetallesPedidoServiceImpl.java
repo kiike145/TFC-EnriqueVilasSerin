@@ -18,7 +18,12 @@ public class DetallesPedidoServiceImpl implements IDetallesPedido {
     DetallesPedidoRepository detallesPedidoRepo;
 
     @Override
-    public void crearDetallesPedido(DetallesPedido dp) {
+    public void crearDetallesPedido(DetallesPedido detallesPedido) {
+    	
+    	DetallesPedido dp = new DetallesPedido();
+    	dp.setPedido(detallesPedido.getPedido());
+    	dp.setProducto(detallesPedido.getProducto());
+    	
         detallesPedidoRepo.save(dp);
     }
 
@@ -41,26 +46,16 @@ public class DetallesPedidoServiceImpl implements IDetallesPedido {
 
     @Override
     public List<DetallesPedido> obtenerDetallesPedidoByPedido(Pedido p) {
-
-        List<DetallesPedido> lista = new LinkedList<>();
-
-        for (DetallesPedido dps : detallesPedidoRepo.findByPedido(p)) {
-
-            DetallesPedido dpAux = new DetallesPedido();
-            Pedido pedidoAux = new Pedido();
-
-            pedidoAux.setId(dps.getPedido().getId());
-            pedidoAux.setPreciototal(dps.getPedido().getPreciototal());
-
-            dpAux.setId(dps.getId());
-            dpAux.setPedido(pedidoAux);
-            dpAux.setProducto(dps.getProducto());
-            dpAux.setCantidadproducto(dps.getCantidadproducto());
-
-            lista.add(dpAux);
-        }
-
-//        return detallesPedidoRepo.findByPedido(p);
-        return lista;
+        return detallesPedidoRepo.findByPedido(p);
     }
+
+	@Override
+	public DetallesPedido obtenerDetallesPedidoByPedidoAndProducto(Pedido pedido, Producto producto) {
+		return detallesPedidoRepo.findByPedidoAndProducto(pedido, producto);
+	}
+
+	@Override
+	public void eliminarDetallesPedidoByid(Integer id) {
+		detallesPedidoRepo.deleteById(id);
+	}
 }
