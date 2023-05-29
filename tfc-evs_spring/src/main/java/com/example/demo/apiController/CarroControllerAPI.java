@@ -30,29 +30,31 @@ public class CarroControllerAPI {
 	IDetallesPedido detallesPedidoServ;
 	@Autowired
 	IPedidoService pedidoServ;
-	@Autowired
-	IProductosService productoServ;
+
 	
 	@GetMapping("/{idPedido}")
 	public List<DetallesPedido> devolverProductosByPedido(@PathVariable("idPedido") Integer idPedido) {
-		return detallesPedidoServ.obtenerDetallesPedidoByPedido(pedidoServ.obtenerPedidoById(idPedido));
+		return detallesPedidoServ.obtenerDetallesPedidoByIdPedido(idPedido);
 	}
 	
     @PostMapping("/")
-    public void addProductoToPedidoByUsuario(@RequestBody DetallesPedido detallesPedido) {
+    public void addProductoToPedido(@RequestBody DetallesPedido detallesPedido) {   	
     	detallesPedidoServ.crearDetallesPedido(detallesPedido);
     }
     
     @PutMapping("/")
-    public void updateProductoToPedidoByUsuario(@RequestBody DetallesPedido detallesPedido) {
+    public void updateProductoToPedido(@RequestBody DetallesPedido detallesPedido) {
     	detallesPedidoServ.actulizarDetallesPedido(detallesPedido);
     }
 	
 	@DeleteMapping("/")
-	public String eliminarProductosByPedido(@RequestBody DetallesPedido dp) {
-		DetallesPedido dpAux = detallesPedidoServ.obtenerDetallesPedidoByPedidoAndProducto(pedidoServ.obtenerPedidoById(dp.getPedido().getId()), productoServ.obtenerProductoById(dp.getProducto().getId()));
+	public void eliminarProductosByPedido(@RequestBody DetallesPedido dp) {
+		DetallesPedido dpAux = detallesPedidoServ.obtenerDetallesPedidoByPedidoAndProducto(dp);
 		detallesPedidoServ.eliminarDetallesPedidoByid(dpAux.getId());
-		return "se elimina el registro";
 	}
-
+	
+	@GetMapping("/price/{idPedido}")
+	public Float devolverPrecioByPedido(@PathVariable("idPedido") Integer idPedido) {
+		return pedidoServ.obtenerPedidoById(idPedido).getPreciototal();
+	}
 }
