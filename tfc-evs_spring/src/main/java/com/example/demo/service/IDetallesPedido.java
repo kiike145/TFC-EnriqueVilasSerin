@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface IDetallesPedido {
     void crearDetallesPedido(DetallesPedido dp);
+    void actulizarDetallesPedido(DetallesPedido dp);
     List<DetallesPedido> obtenerDetallesPedido();
     DetallesPedido obtenerDetallesPedidoById(Integer id);
     List<DetallesPedido> obtenerDetallesPedidoByPedido(Pedido p);

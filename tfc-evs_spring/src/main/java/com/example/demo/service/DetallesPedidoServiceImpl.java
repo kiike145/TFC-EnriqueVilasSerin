@@ -20,11 +20,10 @@ public class DetallesPedidoServiceImpl implements IDetallesPedido {
     @Override
     public void crearDetallesPedido(DetallesPedido detallesPedido) {
     	
-    	DetallesPedido dp = new DetallesPedido();
-    	dp.setPedido(detallesPedido.getPedido());
-    	dp.setProducto(detallesPedido.getProducto());
-    	
-        detallesPedidoRepo.save(dp);
+    	if (detallesPedido.getCantidadproducto() == null) {
+    		detallesPedido.setCantidadproducto(1);
+    	}
+        detallesPedidoRepo.save(detallesPedido);
     }
 
     @Override
@@ -57,5 +56,14 @@ public class DetallesPedidoServiceImpl implements IDetallesPedido {
 	@Override
 	public void eliminarDetallesPedidoByid(Integer id) {
 		detallesPedidoRepo.deleteById(id);
+	}
+
+	@Override
+	public void actulizarDetallesPedido(DetallesPedido dp) {
+		Optional<DetallesPedido> o = detallesPedidoRepo.findById(dp.getId());
+		if (o.isPresent()) {
+            o.get().setCantidadproducto(dp.getCantidadproducto());
+            detallesPedidoRepo.save(o.get());
+        }
 	}
 }
