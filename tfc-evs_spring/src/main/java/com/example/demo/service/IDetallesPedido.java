@@ -11,7 +11,7 @@ public interface IDetallesPedido {
     void actulizarDetallesPedido(DetallesPedido dp);
     List<DetallesPedido> obtenerDetallesPedido();
     DetallesPedido obtenerDetallesPedidoById(Integer id);
-    List<DetallesPedido> obtenerDetallesPedidoByPedido(Pedido p);
-    DetallesPedido obtenerDetallesPedidoByPedidoAndProducto(Pedido pedido , Producto producto);
+    List<DetallesPedido> obtenerDetallesPedidoByIdPedido(Integer idPedido);
+    DetallesPedido obtenerDetallesPedidoByPedidoAndProducto(DetallesPedido dp);
     void eliminarDetallesPedidoByid(Integer id);
 }
