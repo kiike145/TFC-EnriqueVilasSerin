@@ -27,6 +27,7 @@ const SelecctorUnidadesProducto = ({ dp }) => {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
+    window.location.reload();
   };
 
   return (
