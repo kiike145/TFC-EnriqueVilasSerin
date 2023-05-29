@@ -22,16 +22,24 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("SELECT nombreUsuario, contrasena, FROM usuarios WHERE nombreUsuario = ?")
-                .authoritiesByUsernameQuery("SELECT u.nombreUsuario , p.nombreRol FROM usuariosXrol ur "
-                        + "JOIN usuarios u ON u.id = ur.idUsuario "
-                        + "JOIN perfiles p ON p.id = ur.idRol "
-                        + "WHERE u.nombreUsuario = ?");
+                .usersByUsernameQuery("SELECT nombreusuario, contrasena, activo FROM usuarios WHERE nombreusuario = ?")
+                .authoritiesByUsernameQuery("SELECT u.nombreusuario , r.nombrerol FROM usuariosxrol ur" +
+                        " JOIN usuarios u ON u.id = ur.idusuario" +
+                        " JOIN rol r ON r.id = ur.idrol" +
+                        " WHERE u.nombreusuario = ? and r.nombrerol = 'ADMINISTRADOR'");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
+        http.authorizeRequests()
+        		.antMatchers("/store/**").permitAll()
+                .antMatchers("/pedidos/**").hasAnyAuthority("ADMINISTRADOR")
+                .antMatchers("/productos/**").hasAnyAuthority("ADMINISTRADOR")
+                .antMatchers("/users/**").hasAnyAuthority("ADMINISTRADOR")
+
+            // LOGIN
+            .and().formLogin().permitAll();
     }
 
     @Bean
