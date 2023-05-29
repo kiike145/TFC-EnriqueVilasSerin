@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProductListItem = ({ product = {} }) => {
   const handleOnClick = async () => {
-    await fetch('http://localhost:8080/store/users/', {
+    await fetch('http://localhost:8080/store/cart/', {
       method: 'POST',
       body: JSON.stringify({
         producto: { id: product.id },
