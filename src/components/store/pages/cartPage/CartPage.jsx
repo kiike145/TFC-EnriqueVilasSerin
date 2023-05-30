@@ -2,6 +2,7 @@ import { Box, Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import GeneralLayout from '../../../../common/layout/GeneralLayout';
 import ListaProductosCarro from './ListaProductosCarro';
+import PaypalButton from './PaypalButton';
 
 export const CartPage = () => {
   const [detallesPedido, setDetallesPedido] = useState([]);
@@ -42,9 +43,10 @@ export const CartPage = () => {
             ''
           ) : (
             <Grid container width="10vw" direction="column">
-              Total: {precioTotal}€
+              Total: {precioTotal}$
               <Box>
-                <Button variant="contained">Tramitar pedido</Button>
+                {/* <Button variant="contained">Tramitar pedido</Button> */}
+                <PaypalButton precioTotal={precioTotal} />
               </Box>
             </Grid>
           )}
