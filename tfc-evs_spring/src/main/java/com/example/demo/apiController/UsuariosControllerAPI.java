@@ -6,6 +6,8 @@ import com.example.demo.service.IDetallesPedido;
 import com.example.demo.service.IPedidoService;
 import com.example.demo.service.IProductosService;
 import com.example.demo.service.IUsuarioService;
+import com.example.demo.utilities.Confimarcion;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,15 +33,14 @@ public class UsuariosControllerAPI {
 
         if (!usuarioServ.findUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena())) {
         	
-        	System.out.println(user);
-        	
         	usuarioServ.crearUsuario(user);
+        	
+        	Confimarcion.enviarCorreoConfirmacionRegistro(user.getEmail(), user.getNombreusuario());
         	
         	Pedido p = new Pedido();
         	p.setUsuario(user);
         	p.setEstado(1);
         	p.setEstado(1);
-        	
         	pedidoServ.creaPedido(p);
         	
             return new ResponseEntity<>(pedidoServ.obtenerPedidoByUsuarioAndEstado(usuarioServ.getUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena()), 1).getId()  , HttpStatus.OK);
