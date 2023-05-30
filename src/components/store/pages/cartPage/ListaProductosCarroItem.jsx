@@ -28,7 +28,7 @@ const ListaProductosCarroItem = ({ dp = {} }) => {
         <span>{producto.nombre}</span>
       </Grid>
       <Grid>
-        <h3>{producto.precio}€</h3>
+        <h3>{producto.precio}$</h3>
         <SelecctorUnidadesProducto dp={dp} />
         <Button variant="contained" sx={{ m: 1 }} onClick={handleOnClick}>
           Eliminar

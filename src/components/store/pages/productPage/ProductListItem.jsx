@@ -21,7 +21,7 @@ const ProductListItem = ({ product = {} }) => {
     <Box sx={{ m: 2, border: '1px solid black', p: 1, maxWidth: '14vw' }}>
       <img src={product.imagen} className="imagenProducto" />
       <Grid container justifyContent="space-between">
-        <span className="nombreProducto">{product.nombre}</span> <span>{product.precio}€</span>
+        <span className="nombreProducto">{product.nombre}</span> <span>{product.precio}$</span>
       </Grid>
       <Button fullWidth variant="contained" onClick={handleOnClick} disabled={isLogged === null}>
         Añadir
