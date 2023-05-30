@@ -37,33 +37,38 @@ const SignUpPage = () => {
       method: 'POST',
       body: JSON.stringify({
         nombre: formState.name,
-        apellido: formState.lastname,
+        apellidos: formState.lastname,
         nombreusuario: formState.nombreusuario,
         contrasena: formState.contrasena,
         email: formState.email,
         fechanacimiento: formState.fechanacimiento,
-        direction: formState.direction,
+        direccion: formState.direction,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    }).then((data) => {
-      if (data.status === 200) {
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error('Error en la solicitud');
+        }
+      })
+      .then((data) => {
         sessionStorage.setItem('isLogged', true);
-      }
-      if (data.status === 400) {
-        setError('Ya exite un usuario con estos datos');
-      }
-    });
+        sessionStorage.setItem('idPedido', JSON.stringify(data));
+      })
+      .catch((error) => {
+        setError('Usuario o contraseña incorrectos, revise los datos');
+      });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setError('');
     saveUser();
-    if (error !== '') {
-      navigate('/');
-    }
+    navigate('/');
   };
 
   return (

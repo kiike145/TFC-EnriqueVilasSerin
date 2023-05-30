@@ -1,8 +1,6 @@
 package com.example.demo.apiController;
 
-import com.example.demo.model.DetallesPedido;
 import com.example.demo.model.Pedido;
-import com.example.demo.model.Producto;
 import com.example.demo.model.Usuario;
 import com.example.demo.service.IDetallesPedido;
 import com.example.demo.service.IPedidoService;
@@ -27,16 +25,24 @@ public class UsuariosControllerAPI {
     IUsuarioService usuarioServ;
     @Autowired
     IPedidoService pedidoServ;
-    @Autowired
-    IProductosService productoServ;
-    @Autowired
-    IDetallesPedido detallesPedidoServ;
 
     @PostMapping("/signup")
-    public ResponseEntity<Usuario> registrarUsuario(@RequestBody Usuario user) {
+    public ResponseEntity<Integer> registrarUsuario(@RequestBody Usuario user) {
 
         if (!usuarioServ.findUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena())) {
-            return new ResponseEntity<Usuario>(user , HttpStatus.OK);
+        	
+        	System.out.println(user);
+        	
+        	usuarioServ.crearUsuario(user);
+        	
+        	Pedido p = new Pedido();
+        	p.setUsuario(user);
+        	p.setEstado(1);
+        	p.setEstado(1);
+        	
+        	pedidoServ.creaPedido(p);
+        	
+            return new ResponseEntity<>(pedidoServ.obtenerPedidoByUsuarioAndEstado(usuarioServ.getUsuarioByNombreusuarioAndContrasena(user.getNombreusuario(), user.getContrasena()), 1).getId()  , HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
