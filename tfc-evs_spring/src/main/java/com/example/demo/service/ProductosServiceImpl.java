@@ -5,6 +5,7 @@ import com.example.demo.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,7 +54,16 @@ public class ProductosServiceImpl implements IProductosService {
 
 	@Override
 	public List<Producto> obtenerProductosActivos() {
-		return productosRepo.findByActivo(true);
+		
+		List<Producto> productos = new LinkedList<>();
+		
+		for (Producto p : productosRepo.findByActivo(true)) {
+			if (p.getCantidad() > 1) {
+				productos.add(p);
+			}
+		}
+		
+		return productos;
 	}
 
 	@Override
@@ -65,5 +75,10 @@ public class ProductosServiceImpl implements IProductosService {
 			p.get().setActivo(true);
 			productosRepo.save(p.get());
 		}
+	}
+
+	@Override
+	public void actualizarProdcuto(Producto p) {
+		productosRepo.save(p);
 	}
 }
