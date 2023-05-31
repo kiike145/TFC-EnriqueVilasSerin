@@ -1,3 +1,4 @@
+import { MenuItem, Select } from '@mui/material';
 import React, { useState } from 'react';
 
 const SelecctorUnidadesProducto = ({ dp }) => {
@@ -7,9 +8,9 @@ const SelecctorUnidadesProducto = ({ dp }) => {
   const unidades = [];
   for (let i = 1; i <= producto.cantidad; i++) {
     unidades.push(
-      <option key={i} value={i}>
+      <MenuItem key={i} value={i}>
         {i}
-      </option>
+      </MenuItem>
     );
   }
 
@@ -31,9 +32,13 @@ const SelecctorUnidadesProducto = ({ dp }) => {
   };
 
   return (
-    <select value={unidadesSeleccionadas} onChange={onHandleChange}>
+    <Select color="secondary" value={unidadesSeleccionadas} label="Cantidad" onChange={onHandleChange}>
       {unidades}
-    </select>
+    </Select>
+
+    // <select value={unidadesSeleccionadas} onChange={onHandleChange}>
+    //   {unidades}
+    // </select>
   );
 };
 
