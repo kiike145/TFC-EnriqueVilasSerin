@@ -14,7 +14,9 @@ const PaypalButton = ({ precioTotal }) => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => sessionStorage.setItem('idPedido', JSON.stringify(data)));
   };
 
   return (
