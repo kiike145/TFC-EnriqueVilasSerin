@@ -13,12 +13,17 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Autowired
     UsuarioRepository usuarioRepo;
+    @Autowired
+    IRolService rolServ;
+    
 
     @Override
     public Usuario crearUsuario(Usuario u) {
 
         if (usuarioRepo.findByNombreusuarioAndContrasena(u.getNombreusuario() , u.getContrasena()) == null) {
+        	
             u.setActivo(true);
+            u.addRol(rolServ.obtenerRolById(1));
             usuarioRepo.save(u);
             return u;
         }
