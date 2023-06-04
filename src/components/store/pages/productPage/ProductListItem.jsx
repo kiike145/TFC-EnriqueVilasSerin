@@ -18,7 +18,7 @@ const ProductListItem = ({ product = {} }) => {
   };
 
   return (
-    <Box sx={{ m: 2, border: '1px solid black', p: 1, maxWidth: '14vw' }}>
+    <Box sx={{ m: 2, border: '1px solid #757575', p: 1, width: '13vw', borderRadius: 2 }} alignItems="space-between">
       <img src={product.imagen} className="imagenProducto" />
       <Grid container justifyContent="space-between">
         <span className="nombreProducto">{product.nombre}</span> <span>{product.precio}$</span>
