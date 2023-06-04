@@ -15,28 +15,68 @@
         pointer-events: none;
         opacity: 0.5;
       }
+      
+      h2 {
+      	margin-top:5%
+      }
     </style>
   </head>
   <body>
-    <header th:insert="fragments/header :: menu-principal"></header>
     <main>
       <div class="container">
+      
+      <nav th:fragment="menu-principal" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/">EcomApp</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>       
+      </button>
+
+            
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/productos/}">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/users/}">Usuarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" th:href="@{/pedidos/}">Pedidos</a>
+          </li>
+        </ul>
+
+        <div sec:authorize="isAuthenticated()">
+          <span class="text-light">Bienvenido</span> <span class="text-light" sec:authentication="name"></span>
+          <a class="btn btn-primary" th:href="@{/logout}">Salir</a>
+        </div>
+              
+      </div>
+    </nav>
         <h2>Listado de pedidos</h2>
 
 
         <table class="table">
           <th>Id</th>
+          <th>Usuario</th>
           <th>Estado</th>
           <th>Precio total</th>
-          <th>Usuario</th>
           <th>Activo</th>
           <th>Operaciones</th>
 
           <tr th:each="pedido : ${listaPedidos}">
             <td th:text="${pedido.id}"></td>
+            <td th:text="${pedido.usuario.nombre}"></td>
             <td th:text="${pedido.estado} ? 'Abierto' : 'Cerrado'"></td>
             <td th:text="${pedido.preciototal}"></td>
-            <td th:text="${pedido.usuario.nombre}"></td>
             <td th:text="${pedido.activo} ? 'Sí' : 'No'"></td>
             <td>
 
