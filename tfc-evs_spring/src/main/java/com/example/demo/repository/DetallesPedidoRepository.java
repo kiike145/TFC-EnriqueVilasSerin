@@ -14,11 +14,4 @@ public interface DetallesPedidoRepository extends JpaRepository<DetallesPedido, 
     List<DetallesPedido> findByPedido(Pedido p);
     DetallesPedido findByPedidoAndProducto(Pedido pedido , Producto producto);
 
-    @Query(
-        value = "select sum(prod.precio * dp.cantidadProducto) as precioTotal from pedidos ped" +
-                "   inner join detallesPedido dp on ped.id = dp.idPedido" +
-                "   inner join productos prod on dp.idProducto = prod.id" +
-                "   where ped.id = ?",
-        nativeQuery = true)
-    Float getPrecioTotalByPedido(Integer idPedido);
 }
