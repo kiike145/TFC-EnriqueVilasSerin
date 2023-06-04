@@ -64,7 +64,6 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public boolean findUsuarioByNombreusuarioAndContrasena(String nombreusuario, String contrasena) {
 
         if (usuarioRepo.findByNombreusuarioAndContrasena(nombreusuario , contrasena) == null) {
-            // En caso de que sea nulo, no existe ningun registro con esos datos
             return false;
         }
         return true;

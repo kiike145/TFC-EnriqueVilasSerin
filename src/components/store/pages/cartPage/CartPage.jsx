@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import GeneralLayout from '../../../../common/layout/GeneralLayout';
 import ListaProductosCarro from './ListaProductosCarro';
@@ -32,7 +32,7 @@ export const CartPage = () => {
   return (
     <GeneralLayout>
       <Grid container direction="column" spacing={0} sx={{ minHeight: '80vh', backgroundColor: '#F9F9F9', paddingLeft: 3, paddingRight: 3 }}>
-        <Typography variant="h5" sx={{ padding: 2 }}>
+        <Typography variant="h5" sx={{ pl: 2 }}>
           Carrito
         </Typography>
 
@@ -45,7 +45,6 @@ export const CartPage = () => {
             <Grid container width="10vw" direction="column">
               Total: {precioTotal}$
               <Box>
-                {/* <Button variant="contained">Tramitar pedido</Button> */}
                 <PaypalButton precioTotal={precioTotal} />
               </Box>
             </Grid>

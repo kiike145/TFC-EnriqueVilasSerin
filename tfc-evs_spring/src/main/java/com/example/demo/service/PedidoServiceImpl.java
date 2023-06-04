@@ -88,7 +88,6 @@ public class PedidoServiceImpl implements IPedidoService {
 		
 		pedidoAux.setEstado(0);
 		guardarPedido(pedidoAux);
-		System.out.println("pedido cerrado");
 		
     	Pedido p = new Pedido();
     	p.setUsuario(pedidoAux.getUsuario());
