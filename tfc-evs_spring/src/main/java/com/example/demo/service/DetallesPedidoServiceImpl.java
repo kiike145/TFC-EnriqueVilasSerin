@@ -84,7 +84,17 @@ public class DetallesPedidoServiceImpl implements IDetallesPedido {
 
     @Override
     public List<DetallesPedido> obtenerDetallesPedidoByIdPedido(Integer idPedido) {
-        return detallesPedidoRepo.findByPedido(pedidoServ.obtenerPedidoById(idPedido));
+    	
+    	List<DetallesPedido> listaAux = new LinkedList<>();
+    	
+    	for (DetallesPedido dp : detallesPedidoRepo.findByPedido(pedidoServ.obtenerPedidoById(idPedido))) {
+    		
+    		if (dp.getProducto().getCantidad() > 0) {
+    			listaAux.add(dp);
+    		}
+    	}
+    	
+        return listaAux;
     }
 
 	@Override
