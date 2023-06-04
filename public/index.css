@@ -1,7 +1,6 @@
 body {
   margin: 0;
-  font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans',
-    'Helvetica Neue', sans-serif;
+  font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 a {
@@ -20,7 +19,20 @@ h1 {
 }
 
 h3 {
-  margin: 0;
+  text-align: center;
+}
+
+a {
+  color: #ee1f9a;
+}
+
+a:visited {
+  color: #cc1f87;
+}
+
+.logo {
+  height: 5rem;
+  scale: 1.2;
 }
 
 .nombreProducto {
@@ -28,15 +40,12 @@ h3 {
 }
 
 .imagenProducto {
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
+.imagenCarro,
 .productHome {
-  max-width: 30%;
-  height: auto;
-}
-
-.imagenCarro {
-  max-height: 20vh;
+  height: 11.6rem;
+  width: auto;
 }
