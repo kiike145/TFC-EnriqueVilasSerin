@@ -49,3 +49,8 @@ a:visited {
   height: 11.6rem;
   width: auto;
 }
+
+.banner {
+  height: 16rem;
+  margin-bottom: 1rem;
+}
