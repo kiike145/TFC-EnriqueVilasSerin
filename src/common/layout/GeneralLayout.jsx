@@ -35,7 +35,7 @@ const GeneralLayout = ({ children }) => {
         {children}
       </Grid>
       <Grid component="footer" alignItems="center" justifyContent="center" sx={{ height: '8vh', backgroundColor: 'primary.main' }}>
-        a
+        <Box>Proyecto desarrollado por Enrique Vilas Serín</Box>
       </Grid>
     </Grid>
   );
