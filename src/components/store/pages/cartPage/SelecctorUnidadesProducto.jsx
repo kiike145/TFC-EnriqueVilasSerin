@@ -32,7 +32,7 @@ const SelecctorUnidadesProducto = ({ dp }) => {
   };
 
   return (
-    <Select color="secondary" value={unidadesSeleccionadas} label="Cantidad" onChange={onHandleChange}>
+    <Select color="secondary" value={unidadesSeleccionadas} label="Cantidad" onChange={onHandleChange} sx={{ backgroundColor: 'white' }}>
       {unidades}
     </Select>
   );
